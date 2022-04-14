@@ -1,7 +1,7 @@
 module github.com/24Roger/editor-api
 
-go 1.18
-
+// +heroku goVersion go1.17
+go 1.17
 require (
 	github.com/dgraph-io/dgo/v210 v210.0.0-20220113041351-ba0e5dfc4c3e // indirect
 	github.com/go-chi/chi/v5 v5.0.7 // indirect
