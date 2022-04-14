@@ -1,1 +1,1 @@
-web: bin/editor-api/cmd
+web: bin/editor-api
