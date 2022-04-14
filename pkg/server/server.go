@@ -4,9 +4,11 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/joho/godotenv"
 )
 
 type DrawFlowServer struct {
@@ -14,8 +16,15 @@ type DrawFlowServer struct {
 }
 
 func Server(mux *chi.Mux) *DrawFlowServer {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	port := os.Getenv("PORT")
+
 	s := &http.Server{
-		Addr:           ":4000",
+		Addr:           ":" + port,
 		Handler:        mux,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,

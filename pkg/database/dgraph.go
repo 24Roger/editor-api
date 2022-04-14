@@ -15,6 +15,7 @@ func NewClient() *dgo.Dgraph {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
+
 	DATABASE_URL := os.Getenv("DATABASE_URL")
 	API_KEY := os.Getenv("API_KEY")
 
