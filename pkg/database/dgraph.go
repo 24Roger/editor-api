@@ -13,7 +13,7 @@ func NewClient() *dgo.Dgraph {
 
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Println("Error loading .env file")
 	}
 
 	DATABASE_URL := os.Getenv("DATABASE_URL")

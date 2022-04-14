@@ -23,7 +23,7 @@ func FindAllProjects(w http.ResponseWriter, r *http.Request) {
 	res, err := txn.Query(context.Background(), query.GetAllProjects)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	w.Write(res.Json)
 }
@@ -38,7 +38,7 @@ func NewProject(w http.ResponseWriter, r *http.Request) {
 	pb, err := json.Marshal(p)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 
 	dgClient := database.NewClient()
@@ -52,7 +52,7 @@ func NewProject(w http.ResponseWriter, r *http.Request) {
 	res, err := txn.Mutate(context.Background(), mu)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	w.Write(res.Json)
 }
