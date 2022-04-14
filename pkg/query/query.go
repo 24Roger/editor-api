@@ -1,6 +1,6 @@
-package main
+package query
 
-const getAllProjects string = `
+const GetAllProjects string = `
 {
 	projects(func: has(data)){
     uid

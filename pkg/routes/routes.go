@@ -1,6 +1,7 @@
-package main
+package routes
 
 import (
+	"github.com/24Roger/editor-api/pkg/controllers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
@@ -23,8 +24,8 @@ func Route() *chi.Mux {
 		cors.Handler,
 	)
 
-	mux.Get("/all-projects", findAllProjects)
-	mux.Post("/new-project", newProject)
+	mux.Get("/all-projects", controllers.FindAllProjects)
+	mux.Post("/new-project", controllers.NewProject)
 
 	return mux
 }

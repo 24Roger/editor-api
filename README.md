@@ -28,5 +28,5 @@ docker run --rm -it -p "8080:8080" -p "9080:9080" -p "8000:8000" -v ~/dgraph:/dg
 ```
 4. Run the following command
 ```sh
-go run .
+go run cmd/main.go
 ```

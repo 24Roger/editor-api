@@ -1,4 +1,4 @@
-package main
+package database
 
 import (
 	"log"
@@ -9,7 +9,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func newClient() *dgo.Dgraph {
+func NewClient() *dgo.Dgraph {
 
 	err := godotenv.Load()
 	if err != nil {

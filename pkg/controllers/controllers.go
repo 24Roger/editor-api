@@ -1,4 +1,4 @@
-package main
+package controllers
 
 import (
 	"context"
@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/24Roger/editor-api/pkg/database"
+	"github.com/24Roger/editor-api/pkg/query"
 	"github.com/dgraph-io/dgo/v210/protos/api"
 )
 
@@ -14,11 +16,11 @@ type Project struct {
 	Data string `json:"data"`
 }
 
-func findAllProjects(w http.ResponseWriter, r *http.Request) {
+func FindAllProjects(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	dgClient := newClient()
+	dgClient := database.NewClient()
 	txn := dgClient.NewTxn()
-	res, err := txn.Query(context.Background(), getAllProjects)
+	res, err := txn.Query(context.Background(), query.GetAllProjects)
 
 	if err != nil {
 		log.Fatal(err)
@@ -26,7 +28,7 @@ func findAllProjects(w http.ResponseWriter, r *http.Request) {
 	w.Write(res.Json)
 }
 
-func newProject(w http.ResponseWriter, r *http.Request) {
+func NewProject(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	var req Project
@@ -39,7 +41,7 @@ func newProject(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	dgClient := newClient()
+	dgClient := database.NewClient()
 	txn := dgClient.NewTxn()
 
 	mu := &api.Mutation{

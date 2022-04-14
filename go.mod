@@ -1,4 +1,4 @@
-module libraries
+module github.com/24Roger/editor-api
 
 go 1.18
 
